@@ -23,36 +23,45 @@ After retrieving the dataset from the provided URL using TabularDataFactory clas
 The best model of the pipeline was recorded with the following result: accuracy = 0.913, C=0.001, and max_iter=50.
 
 **What are the benefits of the parameter sampler you chose?**
+
 Discrete values with 'choice' have been used for both tuned parameters. RandomParameterSampling has been selected due to its fast performance, simple approach, and would provide random unbiased search in the overall population.  
 
 **What are the benefits of the early stopping policy you chose?**
+
 BanditPolicy has been used as an early stopping policy to improve the performance of the computational resources by automatically terminating poorly and delayed performing runs. 
 
 ## AutoML
 Used hyperparameters for AutoML:
 
-** automl_config = AutoMLConfig(
+```automl_config = AutoMLConfig(
     experiment_timeout_minutes=20,
     task='classification',
     primary_metric='accuracy',
     training_data=ds,
     compute_target=compute_target,
     label_column_name='y',
-    n_cross_validations=5) **
-
+    n_cross_validations=5) 
+```
 - experiment_timeout_minutes has been reduced to 20 minutes to avoid the run time out failure. 
 - Experiment type set to 'classification'.
 - Accuracy has been selected as a primary metric.
 - 5 folds have been selected for cross-validation parameter. 
 
-images/AutoML-best-model.png
+![](images/AutoML-Runs.png)
 
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
 
+The difference in accuracy between both models is slightly better in the AutoML pipeline compared with the HyperDrive(SKLearn) model with a variance of 0.003. However, even with this small variance, AutoML is better since the pipeline automatically performs the necessary calculations, validations, training, using different algorithms...and more. This makes it exceed the SKLearn experience where we need to explicitly specify the adjustment and spend more time to get the best hyperparameters combinations. 
+
+![](images/SKLearn-best-matrics.png)
+
+![](images/AutoML-best-model.png)
+
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
+Resolving the imbalance issue in the dataset, this type of issue is common in the Classification problems by resampling either by (Over or Undersampling) or ensemble of Sampler using BaggingClassifier classifier for example this will improve the model accuracy. In addition, trying new combinations in tuning the hypermeters to get better accuracy.  
+
 ## Proof of cluster clean up
-**If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
-**Image of cluster marked for deletion**
+![](images/Deleting.png)
