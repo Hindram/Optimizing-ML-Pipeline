@@ -31,19 +31,21 @@ BanditPolicy has been used as an early stopping policy to improve the performanc
 ## AutoML
 Used hyperparameters for AutoML:
 
-***automl_config = AutoMLConfig(
+** automl_config = AutoMLConfig(
     experiment_timeout_minutes=20,
     task='classification',
     primary_metric='accuracy',
     training_data=ds,
     compute_target=compute_target,
     label_column_name='y',
-    n_cross_validations=5)***
+    n_cross_validations=5) **
 
 - experiment_timeout_minutes has been reduced to 20 minutes to avoid the run time out failure. 
 - Experiment type set to 'classification'.
 - Accuracy has been selected as a primary metric.
 - 5 folds have been selected for cross-validation parameter. 
+
+images/AutoML-best-model.png
 
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
