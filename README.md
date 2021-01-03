@@ -65,3 +65,12 @@ Resolving the imbalance issue in the dataset, this type of issue is common in th
 
 ## Proof of cluster clean up
 ![](images/Deleting.png)
+
+## References
+
+- Udacity Nanodegree content.
+- https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters
+- https://towardsdatascience.com/having-an-imbalanced-dataset-here-is-how-you-can-solve-it-1640568947eb
+- https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
+- https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-tune-hyperparameters.md
+
