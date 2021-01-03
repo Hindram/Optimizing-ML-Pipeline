@@ -12,7 +12,15 @@ The dataset contains 11162 records with 17 columns.
 The best performing model was a VotingEnsemble pipeline using AutoML with 0.917 accuracy rate. 
 
 ## Scikit-learn Pipeline
-**Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
+After retrieving the dataset from the provided URL using TabularDataFactory class. The followed steps have been applied to for Scikit-learn Pipeline:
+- Dataset has been cleared and preprocessed using clean_data method in train.py script. The preprocessing involved dropping nulls values, encoding categorical features using a one-hot numeric approach, and more. 
+- Then splitting the data into training and testing set using train_test_split class.
+- LogisticRegression class has been used to fit the model. 
+- Defining the estimator then passed it to HyperDriveConfig script.
+- Parameter sampler 'RandomParameterSampling' holds the tuning hyperparameters (--C: Inverse of regularization, --max_iter: Maximum number of iterations) to be passed to the HyperDriveConfig script. 
+- Early termination policy has been added to the script then experiment submission. 
+
+The best model of the pipeline was recorded with the following result: accuracy = 0.913, C=0.001, and max_iter=50.
 
 **What are the benefits of the parameter sampler you chose?**
 
