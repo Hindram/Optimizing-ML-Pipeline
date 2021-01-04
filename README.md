@@ -1,5 +1,17 @@
 # Optimizing an ML Pipeline in Azure
 
+## Table of content
+* [Overview](#overview)
+* [Summary](#summary)
+* [Scikit-learn Pipeline](#scikit-learn-pipeline)
+  - [Parameter Sampler](#parameter-sampler)
+  - [Termination policy](#termination-policy)
+* [AutoML](#automl)
+* [Pipeline comparison](#pipeline-comparison)
+* [Future work](#future-work)
+* [Proof of cluster clean up](#proof-of-cluster-clean-up)
+* [References](#references)
+
 ## Overview
 This project is part of the Udacity Azure ML Nanodegree.
 In this project, we build and optimize an Azure ML pipeline using the Python SDK and a provided Scikit-learn model.
@@ -22,11 +34,11 @@ After retrieving the dataset from the provided URL using TabularDataFactory clas
 
 The best model of the pipeline was recorded with the following result: accuracy = 0.913, C=0.001, and max_iter=50.
 
-**What are the benefits of the parameter sampler you chose?**
+**Parameter Sampler**
 
 Discrete values with 'choice' have been used for both tuned parameters. RandomParameterSampling has been selected due to its fast performance, simple approach, and would provide random unbiased search in the overall population.  
 
-**What are the benefits of the early stopping policy you chose?**
+**Termination policy**
 
 BanditPolicy has been used as an early stopping policy to improve the performance of the computational resources by automatically terminating poorly and delayed performing runs. 
 
