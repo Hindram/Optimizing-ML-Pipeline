@@ -4,8 +4,6 @@
 * [Overview](#overview)
 * [Summary](#summary)
 * [Scikit-learn Pipeline](#scikit-learn-pipeline)
-  - [Parameter Sampler](#parameter-sampler)
-  - [Termination policy](#termination-policy)
 * [AutoML](#automl)
 * [Pipeline comparison](#pipeline-comparison)
 * [Future work](#future-work)
@@ -36,11 +34,13 @@ The best model of the pipeline was recorded with the following result: accuracy 
 
 **Parameter Sampler**
 
-Discrete values with 'choice' have been used for both tuned parameters. RandomParameterSampling has been selected due to its fast performance, simple approach, and would provide random unbiased search in the overall population.  
+Discrete values with 'choice' have been used for both tuned parameters. RandomParameterSampling has been selected due to its fast performance, simple approach, and would provide random unbiased search in the overall population. In addition, it gives satisfactory results and supports the early termination policy of low-performance runs which result in saving resources. Grid Sampling can be used for exhaustive search over the search space if the budget was not an issue. 
 
 **Termination policy**
 
-BanditPolicy has been used as an early stopping policy to improve the performance of the computational resources by automatically terminating poorly and delayed performing runs. 
+BanditPolicy has been used with the parameters evaluation_interval=2 and slack_factor=0.1 as an early stopping policy to improve the performance of the computational resources by automatically terminating poorly and delayed performing runs. Bandit Policy ends runs if the primary metric is not within the specified slack factor/amount when compared with the highest performing run.
+
+Azure ML also supports Median stopping,  and Truncation selection early termination policies. Median stopping terminats runs based on the running averages of primary metrics. Thus, computing all training runs averages and eliminate the worse runs. Truncation selection terminats a percentage of the lowest performing runs. Both methods require more computations and evaluations compared with bandit policy.  
 
 ## AutoML
 Used hyperparameters for AutoML:
@@ -85,4 +85,4 @@ Resolving the imbalance issue in the dataset, this type of issue is common in th
 - https://towardsdatascience.com/having-an-imbalanced-dataset-here-is-how-you-can-solve-it-1640568947eb
 - https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
 - https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-tune-hyperparameters.md
-
+- https://k21academy.com/microsoft-azure/dp-100/hyperparameter-tuning-in-azure/
