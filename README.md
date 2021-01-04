@@ -176,3 +176,6 @@ Resolving the imbalance issue in the dataset, this type of issue is common in th
 - https://k21academy.com/microsoft-azure/dp-100/hyperparameter-tuning-in-azure/
 - https://www.analyticsvidhya.com/blog/2019/08/11-important-model-evaluation-error-metrics/
 - https://neptune.ai/blog/f1-score-accuracy-roc-auc-pr-auc#2
+- https://datascience.stackexchange.com/questions/13151/randomforestclassifier-oob-scoring-method
+- https://medium.com/datadriveninvestor/decision-tree-adventures-2-explanation-of-decision-tree-classifier-parameters-84776f39a28
+- https://stackoverflow.com/questions/47902295/what-is-the-use-of-verbose-in-keras-while-validating-the-model
