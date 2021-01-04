@@ -61,6 +61,50 @@ Used hyperparameters for AutoML:
 
 ![](images/AutoML-Runs.png)
 
+The AutoML pipeline started by cleaning the data such as normalizing continuous numeric features. Then, applying multiple algorithms for example GradientBoosting, TensorFlowLinearClassifier, VotingEnsemble, XGBoostClassifier , LogisticRegression...etc. The best model resulted from VotingEnsemble algorithm with 0.917 accuracy rate.
+
+The best model (VotingEnsemble): 
+![](images/AutoML-best-model.png)
+
+The best model metrics:
+
+```
+{'experiment_status': ['DatasetEvaluation',
+  'FeaturesGeneration',
+  'DatasetFeaturization',
+  'DatasetFeaturizationCompleted',
+  'DatasetBalancing',
+  'DatasetCrossValidationSplit',
+  'ModelSelection'],
+ 'experiment_status_description': ['Gathering dataset statistics.',
+  'Generating features for the dataset.',
+  'Beginning to fit featurizers and featurize the dataset.',
+  'Completed fit featurizers and featurizing the dataset.',
+  'Performing class balancing sweeping',
+  'Generating individually featurized CV splits.',
+  'Beginning model selection.'],
+ 'average_precision_score_weighted': 0.9559031211267512,
+ 'AUC_macro': 0.947188047884206,
+ 'precision_score_macro': 0.7975368448525979,
+ 'norm_macro_recall': 0.5275693725363924,
+ 'balanced_accuracy': 0.7637846862681963,
+ 'average_precision_score_macro': 0.8272763253506387,
+ 'precision_score_micro': 0.9169954476479514,
+ 'AUC_weighted': 0.9471880478842062,
+ 'log_loss': 0.2243431819636159,
+ 'recall_score_macro': 0.7637846862681963,
+ 'average_precision_score_micro': 0.9813850930809564,
+ 'f1_score_weighted': 0.9145324016271321,
+ 'AUC_micro': 0.9806451260819606,
+ 'f1_score_micro': 0.9169954476479514,
+ 'recall_score_micro': 0.9169954476479514,
+ 'accuracy': 0.9169954476479514,
+ 'recall_score_weighted': 0.9169954476479514,
+ 'precision_score_weighted': 0.9128572527634494,
+ 'f1_score_macro': 0.7791277680313309,
+ 'matthews_correlation': 0.5602334700320144,
+ 'weighted_accuracy': 0.9550510164205995}
+```
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
 
@@ -73,7 +117,7 @@ The difference in accuracy between both models is slightly better in the AutoML 
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
-Resolving the imbalance issue in the dataset, this type of issue is common in the Classification problems by resampling either by (Over or Undersampling) or ensemble of Sampler using BaggingClassifier classifier for example this will improve the model accuracy. In addition, trying new combinations in tuning the hypermeters to get better accuracy.  
+Resolving the imbalance issue in the dataset, this type of issue is common in the Classification problems by resampling either by (Over or Undersampling) or ensemble of Sampler using BaggingClassifier classifier for example this will improve the model accuracy. In addition, trying Median stopping,  and Truncation selection early termination policies to explore this concept more. I would also try to use F1 score as a performance matrics instead of accuracy since we are trying to predict whether customers would contribute to the future bank plans where we care more about the positive class. 
 
 ## Proof of cluster clean up
 ![](images/Deleting.png)
@@ -86,3 +130,5 @@ Resolving the imbalance issue in the dataset, this type of issue is common in th
 - https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
 - https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-tune-hyperparameters.md
 - https://k21academy.com/microsoft-azure/dp-100/hyperparameter-tuning-in-azure/
+- https://www.analyticsvidhya.com/blog/2019/08/11-important-model-evaluation-error-metrics/
+- https://neptune.ai/blog/f1-score-accuracy-roc-auc-pr-auc#2
